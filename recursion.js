@@ -299,11 +299,27 @@ module.exports = {
     return answers;
   },
 
-  anagramsIterative(string){
+  anagramsIterative(string) {
     const answers = new Set();
     answers.add(string);
-    
-
+    const queue = [{ prefix: [], otherChars: string.split("") }];
+    while (queue.length) {
+      const current = queue.pop();
+      if (current.prefix.length === string.length) {
+        answers.add(current.prefix.join(''));
+        continue;
+      }
+      for (let i = 0; i < current.otherChars.length; i++) {
+        queue.push({
+          prefix: [...current.prefix, current.otherChars[i]],
+          otherChars: [
+            ...current.otherChars.slice(0, i),
+            ...current.otherChars.slice(i+1),
+          ],
+        });
+      }
+    }
+    return answers;
   },
 
   //input object

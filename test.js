@@ -1,4 +1,4 @@
-const { anagrams } = require('./recursion');
+const { anagrams, anagramsIterative } = require('./recursion');
 
 const maze = [
   [' ', ' ', ' ', '*', ' ', ' ', ' '],
@@ -8,4 +8,4 @@ const maze = [
   [' ', ' ', ' ', ' ', ' ', ' ', 'e']
 ]
 
-console.log(anagrams('dogs'))
+console.log(anagramsIterative('eats'))
